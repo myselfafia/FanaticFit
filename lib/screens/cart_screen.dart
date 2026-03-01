@@ -89,7 +89,7 @@ class _CartScreenState extends State<CartScreen> {
 
                     const SizedBox(height: 15),
 
-                    /// QUANTITY CONTROLS
+                    /// QUANTITY
                     Row(
                       mainAxisAlignment:
                       MainAxisAlignment.spaceBetween,
@@ -213,7 +213,8 @@ class _CartScreenState extends State<CartScreen> {
                           Colors.red),
                       onPressed: () {},
                       child: const Text("Checkout",
-                      style: TextStyle(color: Colors.white),),
+                      style: TextStyle(color: Colors.white),
+                      ),
                     ),
                   ),
                 ],

@@ -46,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Column(
         children: [
 
-          /// 🔥 LOGO HEADER
+          /// LOGO HEADER
           Container(
             padding: const EdgeInsets.symmetric(vertical: 15),
             color: Colors.grey.shade200,
@@ -58,7 +58,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
 
-          /// 🔥 Page Builder (NO IndexedStack)
           Expanded(
             child: _buildCurrentPage(),
           ),
@@ -135,7 +134,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-// 🔥 HOME CONTENT
+// HOME CONTENT
 class HomeContent extends StatefulWidget {
   const HomeContent({super.key});
 
@@ -339,7 +338,6 @@ class _HomeContentState extends State<HomeContent> {
                       ),
 
                       const SizedBox(height: 10),
-
                       Text(title),
                     ],
                   ),

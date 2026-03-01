@@ -36,7 +36,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
               const SizedBox(height: 30),
 
-              // 🔥 LOGO
+              // LOGO
               Image.asset(
                 "assets/images/fanaticfit.png",
                 height: 120,
@@ -114,7 +114,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
               const SizedBox(height: 50),
 
-              // 🔥 CREATE ACCOUNT BUTTON
+              // CREATE ACCOUNT BUTTON
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
