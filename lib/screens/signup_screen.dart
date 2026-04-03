@@ -36,7 +36,6 @@ class _SignupScreenState extends State<SignupScreen> {
 
               const SizedBox(height: 30),
 
-              // LOGO
               Image.asset(
                 "assets/images/fanaticfit.png",
                 height: 120,
@@ -44,7 +43,6 @@ class _SignupScreenState extends State<SignupScreen> {
 
               const SizedBox(height: 60),
 
-              // EMAIL FIELD
               TextField(
                 controller: emailController,
                 decoration: InputDecoration(
@@ -58,7 +56,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
               const SizedBox(height: 40),
 
-              // PASSWORD FIELD
+
               TextField(
                 controller: passwordController,
                 obscureText: _obscurePassword,
@@ -86,7 +84,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
               const SizedBox(height: 40),
 
-              // CONFIRM PASSWORD FIELD
+
               TextField(
                 controller: confirmController,
                 obscureText: _obscureConfirm,
@@ -114,7 +112,6 @@ class _SignupScreenState extends State<SignupScreen> {
 
               const SizedBox(height: 50),
 
-              // CREATE ACCOUNT BUTTON
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(

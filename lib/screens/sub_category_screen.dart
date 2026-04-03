@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'jersey_collection_screen.dart';
 
 class SubCategoryScreen extends StatelessWidget {
-  final String title; // League name
+  final String title;
   final List<Map<String, String>> subCategories;
 
   const SubCategoryScreen({
@@ -26,6 +26,7 @@ class SubCategoryScreen extends StatelessWidget {
           crossAxisCount: 3,
           crossAxisSpacing: 15,
           mainAxisSpacing: 15,
+          childAspectRatio: 0.9,
         ),
         itemBuilder: (context, index) {
           final club = subCategories[index];
@@ -58,7 +59,7 @@ class SubCategoryScreen extends StatelessWidget {
                     height: 50,
                     fit: BoxFit.contain,
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 5),
                   Text(
                     club["name"]!,
                     textAlign: TextAlign.center,

@@ -5,7 +5,6 @@ import 'cart_screen.dart';
 import 'favorite_screen.dart';
 import 'account_screen.dart';
 import 'sub_category_screen.dart';
-import 'splash_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -46,7 +45,6 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Column(
         children: [
 
-          /// LOGO HEADER
           Container(
             padding: const EdgeInsets.symmetric(vertical: 15),
             color: Colors.grey.shade200,
@@ -134,7 +132,6 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-// HOME CONTENT
 class HomeContent extends StatefulWidget {
   const HomeContent({super.key});
 

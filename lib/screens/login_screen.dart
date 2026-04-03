@@ -15,7 +15,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController passwordController =
   TextEditingController();
 
-  bool _obscurePassword = true;
+  bool _password = true;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,6 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
 
-      // BACK BUTTON APPBAR
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -39,7 +38,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
               const SizedBox(height: 30),
 
-              // LOGO
               Image.asset(
                 "assets/images/fanaticfit.png",
                 height: 120,
@@ -47,7 +45,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
               const SizedBox(height: 60),
 
-              // USERNAME FIELD
               TextField(
                 controller: usernameController,
                 decoration: InputDecoration(
@@ -62,10 +59,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
               const SizedBox(height: 40),
 
-              // PASSWORD FIELD WITH SHOW/HIDE
               TextField(
                 controller: passwordController,
-                obscureText: _obscurePassword,
+                obscureText: _password,
                 decoration: InputDecoration(
                   hintText: "Password",
                   enabledBorder:
@@ -75,15 +71,15 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   suffixIcon: IconButton(
                     icon: Icon(
-                      _obscurePassword
+                      _password
                           ? Icons.visibility_off
                           : Icons.visibility,
                       color: Colors.grey,
                     ),
                     onPressed: () {
                       setState(() {
-                        _obscurePassword =
-                        !_obscurePassword;
+                        _password =
+                        !_password;
                       });
                     },
                   ),
@@ -92,12 +88,15 @@ class _LoginScreenState extends State<LoginScreen> {
 
               const SizedBox(height: 40),
 
+
+             // const SizedBox(height: 40),
+
               Row(
                 children: [
 
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue,
+                      backgroundColor: Colors.red,
                       padding:
                       const EdgeInsets.symmetric(
                           horizontal: 30,
@@ -116,7 +115,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       style: TextStyle(
                           fontSize: 16,
                           fontWeight:
-                          FontWeight.bold),
+                          FontWeight.bold,
+                      color: Colors.white),
                     ),
                   ),
 
@@ -148,6 +148,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     fontSize: 16,
                     fontWeight:
                     FontWeight.bold,
+                    color: Colors.black
                   ),
                 ),
               ),

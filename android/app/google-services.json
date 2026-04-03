@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "566927738578",
+    "project_id": "fanaticfit-618f7",
+    "storage_bucket": "fanaticfit-618f7.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:566927738578:android:1084126b62968f7d854f0b",
+        "android_client_info": {
+          "package_name": "com.example.fanaticfit"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKEaWcnU4z6YpHXZJClrE_-xXleoTmngc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

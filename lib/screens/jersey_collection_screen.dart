@@ -76,7 +76,7 @@ class JerseyCollectionScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    "৳${jersey["price"]}",
+                    "${jersey["price"]}/-TK",
                     style: const TextStyle(
                         fontWeight:
                         FontWeight.bold),

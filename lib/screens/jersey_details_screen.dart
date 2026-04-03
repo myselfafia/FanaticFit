@@ -40,7 +40,6 @@ class _JerseyDetailsScreenState
           CrossAxisAlignment.start,
           children: [
 
-            /// IMAGE
             Center(
               child: Image.asset(
                 widget.jersey["image"],
@@ -51,7 +50,6 @@ class _JerseyDetailsScreenState
 
             const SizedBox(height: 20),
 
-            /// NAME
             Text(
               widget.jersey["name"],
               style: const TextStyle(
@@ -62,9 +60,8 @@ class _JerseyDetailsScreenState
 
             const SizedBox(height: 10),
 
-            /// PRICE
             Text(
-              "৳${widget.jersey["price"]}",
+              "${widget.jersey["price"]}/-TK",
               style: const TextStyle(
                 fontSize: 18,
                 color: Colors.red,
@@ -73,7 +70,6 @@ class _JerseyDetailsScreenState
 
             const SizedBox(height: 20),
 
-            /// SIZE SELECTION
             const Text(
               "Choose Size",
               style: TextStyle(
@@ -128,7 +124,7 @@ class _JerseyDetailsScreenState
 
             const SizedBox(height: 20),
 
-            /// QUANTITY
+
             const Text(
               "Quantity",
               style: TextStyle(
@@ -169,7 +165,7 @@ class _JerseyDetailsScreenState
 
             const SizedBox(height: 20),
 
-            /// DESCRIPTION
+
             const Text(
               "Description",
               style: TextStyle(
@@ -184,7 +180,7 @@ class _JerseyDetailsScreenState
 
             const SizedBox(height: 30),
 
-            /// ORDER BUTTON
+
             ElevatedButton(
               style:
               ElevatedButton.styleFrom(
@@ -227,7 +223,6 @@ class _JerseyDetailsScreenState
 
             const SizedBox(height: 15),
 
-            /// WISHLIST BUTTON
             OutlinedButton.icon(
               style: OutlinedButton.styleFrom(
                 minimumSize:

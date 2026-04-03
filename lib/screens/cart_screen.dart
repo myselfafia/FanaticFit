@@ -22,7 +22,6 @@ class _CartScreenState extends State<CartScreen> {
     return Column(
       children: [
 
-        /// HEADER
         Container(
           padding: const EdgeInsets.all(15),
           color: Colors.red,
@@ -37,7 +36,6 @@ class _CartScreenState extends State<CartScreen> {
           ),
         ),
 
-        /// CART LIST
         Expanded(
           child: ListView.builder(
             padding: const EdgeInsets.all(15),
@@ -59,10 +57,7 @@ class _CartScreenState extends State<CartScreen> {
                     Row(
                       children: [
 
-                        Image.asset(
-                          item.image,
-                          height: 100,
-                        ),
+                        Image.asset(item.image, height: 100,),
 
                         const SizedBox(width: 15),
 
@@ -78,7 +73,7 @@ class _CartScreenState extends State<CartScreen> {
                                     FontWeight.bold),
                               ),
                               const SizedBox(height: 5),
-                              Text("৳${item.price}"),
+                              Text("${item.price}/-TK"),
                               const SizedBox(height: 5),
                               Text("Size: ${item.size}"),
                             ],
@@ -89,7 +84,7 @@ class _CartScreenState extends State<CartScreen> {
 
                     const SizedBox(height: 15),
 
-                    /// QUANTITY
+                    // QUANTITY
                     Row(
                       mainAxisAlignment:
                       MainAxisAlignment.spaceBetween,
@@ -127,7 +122,7 @@ class _CartScreenState extends State<CartScreen> {
                         ),
 
                         Text(
-                          "৳${item.price * item.quantity}",
+                          "${item.price * item.quantity}/-TK",
                           style: const TextStyle(
                               fontWeight:
                               FontWeight.bold),
@@ -137,7 +132,7 @@ class _CartScreenState extends State<CartScreen> {
 
                     const SizedBox(height: 10),
 
-                    /// REMOVE BUTTON
+                    // REMOVE ITEM
                     Align(
                       alignment: Alignment.centerRight,
                       child: TextButton(
@@ -159,7 +154,7 @@ class _CartScreenState extends State<CartScreen> {
           ),
         ),
 
-        /// TOTAL SECTION
+        // TOTAL SECTION
         Container(
           padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
@@ -180,7 +175,7 @@ class _CartScreenState extends State<CartScreen> {
                           fontWeight:
                           FontWeight.bold)),
                   Text(
-                    "৳${CartStorage.totalAmount}",
+                    "${CartStorage.totalAmount}/-TK",
                     style: const TextStyle(
                         fontWeight:
                         FontWeight.bold),
