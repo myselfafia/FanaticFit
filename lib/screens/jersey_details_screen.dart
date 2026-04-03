@@ -213,7 +213,7 @@ class _JerseyDetailsScreenState
                 );
               },
               child: const Text(
-                "Order",
+                "Add to cart",
                 style: TextStyle(
                     fontWeight:
                     FontWeight.bold,
