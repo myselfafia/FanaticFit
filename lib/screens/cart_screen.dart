@@ -154,7 +154,8 @@ class _CartScreenState extends State<CartScreen> {
           ),
         ),
 
-        // TOTAL SECTION
+        //Item Selection
+
         Container(
           padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(

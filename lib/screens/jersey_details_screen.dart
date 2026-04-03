@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fanaticfit/cart_model.dart';
+import 'wishlist_model.dart';
 
 class JerseyDetailsScreen extends StatefulWidget {
   final Map<String, dynamic> jersey;
@@ -19,12 +20,15 @@ class _JerseyDetailsScreenState
 
   late String selectedSize;
   int quantity = 1;
-  bool isWishlisted = false;
+  late bool isWishlisted;
 
   @override
   void initState() {
     super.initState();
     selectedSize = widget.jersey["sizes"][0];
+
+    isWishlisted =
+        WishlistStorage.isExist(widget.jersey["name"]);
   }
 
   @override
@@ -44,7 +48,6 @@ class _JerseyDetailsScreenState
               child: Image.asset(
                 widget.jersey["image"],
                 height: 250,
-                fit: BoxFit.contain,
               ),
             ),
 
@@ -70,20 +73,14 @@ class _JerseyDetailsScreenState
 
             const SizedBox(height: 20),
 
-            const Text(
-              "Choose Size",
-              style: TextStyle(
-                  fontWeight: FontWeight.bold),
-            ),
-
-            const SizedBox(height: 10),
+            const Text("Choose Size",
+                style: TextStyle(fontWeight: FontWeight.bold)),
 
             Wrap(
               spacing: 10,
               children: widget.jersey["sizes"]
                   .map<Widget>((size) {
-                bool isSelected =
-                    selectedSize == size;
+                bool isSelected = selectedSize == size;
 
                 return GestureDetector(
                   onTap: () {
@@ -92,13 +89,9 @@ class _JerseyDetailsScreenState
                     });
                   },
                   child: Container(
-                    padding:
-                    const EdgeInsets
-                        .symmetric(
-                        horizontal: 15,
-                        vertical: 10),
-                    decoration:
-                    BoxDecoration(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 15, vertical: 10),
+                    decoration: BoxDecoration(
                       border: Border.all(
                         color: isSelected
                             ? Colors.red
@@ -113,8 +106,7 @@ class _JerseyDetailsScreenState
                         color: isSelected
                             ? Colors.red
                             : Colors.black,
-                        fontWeight:
-                        FontWeight.bold,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
@@ -124,39 +116,23 @@ class _JerseyDetailsScreenState
 
             const SizedBox(height: 20),
 
-
-            const Text(
-              "Quantity",
-              style: TextStyle(
-                  fontWeight: FontWeight.bold),
-            ),
+            const Text("Quantity",
+                style: TextStyle(fontWeight: FontWeight.bold)),
 
             Row(
               children: [
-
                 IconButton(
                   onPressed: () {
                     if (quantity > 1) {
-                      setState(() {
-                        quantity--;
-                      });
+                      setState(() => quantity--);
                     }
                   },
-                  icon:
-                  const Icon(Icons.remove),
+                  icon: const Icon(Icons.remove),
                 ),
-
-                Text(
-                  quantity.toString(),
-                  style:
-                  const TextStyle(fontSize: 16),
-                ),
-
+                Text(quantity.toString()),
                 IconButton(
                   onPressed: () {
-                    setState(() {
-                      quantity++;
-                    });
+                    setState(() => quantity++);
                   },
                   icon: const Icon(Icons.add),
                 ),
@@ -165,60 +141,33 @@ class _JerseyDetailsScreenState
 
             const SizedBox(height: 20),
 
-
-            const Text(
-              "Description",
-              style: TextStyle(
-                  fontWeight: FontWeight.bold),
-            ),
-
-            const SizedBox(height: 10),
-
-            Text(
-              widget.jersey["description"],
-            ),
+            Text(widget.jersey["description"]),
 
             const SizedBox(height: 30),
 
-
             ElevatedButton(
-              style:
-              ElevatedButton.styleFrom(
+              style: ElevatedButton.styleFrom(
                 minimumSize:
                 const Size(double.infinity, 50),
-                backgroundColor:
-                Colors.red,
+                backgroundColor: Colors.red,
               ),
               onPressed: () {
-
                 CartStorage.addItem(
                   CartItem(
-                    name:
-                    widget.jersey["name"],
-                    image:
-                    widget.jersey["image"],
-                    price:
-                    widget.jersey["price"],
+                    name: widget.jersey["name"],
+                    image: widget.jersey["image"],
+                    price: widget.jersey["price"],
                     size: selectedSize,
                     quantity: quantity,
                   ),
                 );
 
-                ScaffoldMessenger.of(context)
-                    .showSnackBar(
-                  const SnackBar(
-                    content:
-                    Text("Added to Cart"),
-                  ),
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text("Added to Cart")),
                 );
               },
-              child: const Text(
-                "Add to cart",
-                style: TextStyle(
-                    fontWeight:
-                    FontWeight.bold,
-                    color: Colors.white),
-              ),
+              child: const Text("Add to cart",
+                  style: TextStyle(color: Colors.white)),
             ),
 
             const SizedBox(height: 15),
@@ -230,27 +179,52 @@ class _JerseyDetailsScreenState
               ),
               onPressed: () {
                 setState(() {
-                  isWishlisted =
-                  !isWishlisted;
+                  if (isWishlisted) {
+                    WishlistStorage.removeItem(
+                        widget.jersey["name"]);
+
+                    ScaffoldMessenger.of(context)
+                        .showSnackBar(
+                      const SnackBar(
+                        content:
+                        Text("Removed from Wishlist"),
+                      ),
+                    );
+                  } else {
+                    WishlistStorage.addItem(
+                      WishlistItem(
+                        name: widget.jersey["name"],
+                        image: widget.jersey["image"],
+                        price: widget.jersey["price"],
+                        description:
+                        widget.jersey["description"],
+                        sizes: widget.jersey["sizes"],
+                      ),
+                    );
+
+                    ScaffoldMessenger.of(context)
+                        .showSnackBar(
+                      const SnackBar(
+                        content:
+                        Text("Added to Wishlist"),
+                      ),
+                    );
+                  }
+
+                  isWishlisted = !isWishlisted;
                 });
               },
               icon: Icon(
                 isWishlisted
                     ? Icons.favorite
                     : Icons.favorite_border,
-                color: isWishlisted
-                    ? Colors.red
-                    : Colors.black,
+                color:
+                isWishlisted ? Colors.red : Colors.black,
               ),
               label: Text(
-                isWishlisted
-                    ? "Wishlisted"
-                    : "Wishlist",
-                style: TextStyle(color: Colors.black),
+                isWishlisted ? "Wishlisted" : "Wishlist",
               ),
             ),
-
-            const SizedBox(height: 40),
           ],
         ),
       ),
