@@ -29,14 +29,14 @@ class _SplashScreenState extends State<SplashScreen>
     );
 
     fanaticText = Tween<Offset>(
-      begin: const Offset(-2, 0),
+      begin: const Offset(-1, 0),
       end: Offset.zero,
     ).animate(
       CurvedAnimation(parent: _controller, curve: const Interval(0.3, 0.8)),
     );
 
     fitText = Tween<Offset>(
-      begin: const Offset(2, 0),
+      begin: const Offset(3, 0),
       end: Offset.zero,
     ).animate(
       CurvedAnimation(parent: _controller, curve: const Interval(0.3, 0.8)),
