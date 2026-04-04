@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fanaticfit/cart_model.dart';
+import 'home_screen.dart'; // ✅ IMPORTANT
 
 class CartScreen extends StatefulWidget {
   const CartScreen({super.key});
@@ -57,7 +58,7 @@ class _CartScreenState extends State<CartScreen> {
                     Row(
                       children: [
 
-                        Image.asset(item.image, height: 100,),
+                        Image.asset(item.image, height: 100),
 
                         const SizedBox(width: 15),
 
@@ -69,8 +70,7 @@ class _CartScreenState extends State<CartScreen> {
                               Text(
                                 item.name,
                                 style: const TextStyle(
-                                    fontWeight:
-                                    FontWeight.bold),
+                                    fontWeight: FontWeight.bold),
                               ),
                               const SizedBox(height: 5),
                               Text("${item.price}/-TK"),
@@ -84,7 +84,6 @@ class _CartScreenState extends State<CartScreen> {
 
                     const SizedBox(height: 15),
 
-                    // QUANTITY
                     Row(
                       mainAxisAlignment:
                       MainAxisAlignment.spaceBetween,
@@ -106,8 +105,7 @@ class _CartScreenState extends State<CartScreen> {
                               item.quantity.toString(),
                               style: const TextStyle(
                                   fontSize: 16,
-                                  fontWeight:
-                                  FontWeight.bold),
+                                  fontWeight: FontWeight.bold),
                             ),
 
                             IconButton(
@@ -124,15 +122,13 @@ class _CartScreenState extends State<CartScreen> {
                         Text(
                           "${item.price * item.quantity}/-TK",
                           style: const TextStyle(
-                              fontWeight:
-                              FontWeight.bold),
+                              fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
 
                     const SizedBox(height: 10),
 
-                    // REMOVE ITEM
                     Align(
                       alignment: Alignment.centerRight,
                       child: TextButton(
@@ -154,8 +150,6 @@ class _CartScreenState extends State<CartScreen> {
           ),
         ),
 
-        //Item Selection
-
         Container(
           padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
@@ -172,14 +166,11 @@ class _CartScreenState extends State<CartScreen> {
                 MainAxisAlignment.spaceBetween,
                 children: [
                   const Text("Total amount :",
-                      style: TextStyle(
-                          fontWeight:
-                          FontWeight.bold)),
+                      style: TextStyle(fontWeight: FontWeight.bold)),
                   Text(
                     "${CartStorage.totalAmount}/-TK",
                     style: const TextStyle(
-                        fontWeight:
-                        FontWeight.bold),
+                        fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
@@ -192,11 +183,18 @@ class _CartScreenState extends State<CartScreen> {
                   Expanded(
                     child: OutlinedButton(
                       onPressed: () {
-                        Navigator.pop(context);
+                        // ✅ FIXED HERE
+                        Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => const HomeScreen()),
+                              (route) => false,
+                        );
                       },
-                      child:
-                      const Text("Continue Shopping",
-                      style: TextStyle(color: Colors.black),),
+                      child: const Text(
+                        "Continue Shopping",
+                        style: TextStyle(color: Colors.black),
+                      ),
                     ),
                   ),
 
@@ -205,11 +203,11 @@ class _CartScreenState extends State<CartScreen> {
                   Expanded(
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor:
-                          Colors.red),
+                          backgroundColor: Colors.red),
                       onPressed: () {},
-                      child: const Text("Checkout",
-                      style: TextStyle(color: Colors.white),
+                      child: const Text(
+                        "Checkout",
+                        style: TextStyle(color: Colors.white),
                       ),
                     ),
                   ),
