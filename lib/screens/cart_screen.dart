@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fanaticfit/cart_model.dart';
-import 'home_screen.dart'; // ✅ IMPORTANT
+import 'home_screen.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({super.key});
@@ -183,7 +183,6 @@ class _CartScreenState extends State<CartScreen> {
                   Expanded(
                     child: OutlinedButton(
                       onPressed: () {
-                        // ✅ FIXED HERE
                         Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(
