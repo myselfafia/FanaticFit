@@ -174,7 +174,7 @@ class _HomeContentState extends State<HomeContent> {
       "image": "assets/images/EFL1.png",
       "sub": [
         {"name": "Norwich", "image": "assets/images/norwich.png"},
-        {"name": "Watford", "image": "assets/images/watford.png"},
+        {"name": "Watford", "image": "assets/images/Watford.png"},
         {"name": "Sunderland", "image": "assets/images/sunderland.png"},
         {"name": "Leeds", "image": "assets/images/leeds.png"},
       ]
