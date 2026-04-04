@@ -84,6 +84,24 @@ class JerseyData {
           "Official Tottenham 25-26 Home Jersey. Premium fan version with breathable fabric."
         },
       ],
+      "Manchester UTD": [
+        {
+          "name": "Manchester UTD Home 25-26",
+          "price": 1250,
+          "image": "assets/images/Manchesterutd-home-25-26.jpg",
+          "sizes": ["S", "M", "L", "XL"],
+          "description":
+          "Official Manchester UTD 25-26 Home Jersey. Lightweight and comfortable."
+        },
+        {
+          "name": "Manchester UTD Away 25-26",
+          "price": 1200,
+          "image": "assets/images/Manchesterutd-away-25-26.jpg",
+          "sizes": ["S", "M", "L", "XL"],
+          "description":
+          "Official Manchester UTD 25-26 Away Jersey. Lightweight and comfortable."
+        },
+      ],
 
     },
 
