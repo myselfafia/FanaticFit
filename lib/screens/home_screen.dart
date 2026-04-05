@@ -138,7 +138,6 @@ class _HomeContentState extends State<HomeContent> {
   Timer? _timer;
   double scrollPosition = 0;
 
-  // 🔥 SLIDER
   int currentIndex = 0;
   Timer? bannerTimer;
 
@@ -193,7 +192,6 @@ class _HomeContentState extends State<HomeContent> {
   void initState() {
     super.initState();
 
-    // 🔥 AUTO SCROLL CLUBS
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _timer = Timer.periodic(const Duration(seconds: 3), (_) {
         if (!_scrollController.hasClients) return;
@@ -212,7 +210,6 @@ class _HomeContentState extends State<HomeContent> {
       });
     });
 
-    // 🔥 AUTO SLIDER
     bannerTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
       setState(() {
         currentIndex = (currentIndex + 1) % bannerImages.length;
@@ -243,7 +240,6 @@ class _HomeContentState extends State<HomeContent> {
 
         const SizedBox(height: 20),
 
-        // 🔥 CLUBS
         SizedBox(
           height: 140,
           child: ListView.builder(
@@ -297,7 +293,6 @@ class _HomeContentState extends State<HomeContent> {
 
         const SizedBox(height: 25),
 
-        // 🔥 BIG SLIDER BELOW
         Container(
           height: 300,
           margin: const EdgeInsets.symmetric(horizontal: 20),
