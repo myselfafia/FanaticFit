@@ -534,14 +534,6 @@ class JerseyData {
           "description":
           "Germany Home Authentic Jersey World Cup Football 2022."
         },
-        {
-          "name": "Germany Home 2026",
-          "price": 1300,
-          "image": "assets/images/Germany2022.jpg",
-          "sizes": ["S", "M", "L", "XL"],
-          "description":
-          "Germany Home Authentic Jersey World Cup Football 2022."
-        },
       ],
     },
   };
