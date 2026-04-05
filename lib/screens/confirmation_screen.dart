@@ -41,7 +41,8 @@ class ConfirmationScreen extends StatelessWidget {
                       (route) => false,
                 );
               },
-              child: const Text("Continue Shopping", style: TextStyle(color: Colors.white, fontSize: 16)),
+              child: const Text("Continue Shopping",
+                  style: TextStyle(color: Colors.white, fontSize: 16)),
             ),
 
           ],

@@ -184,14 +184,12 @@ class _CartScreenState extends State<CartScreen> {
                       },
                       child: const Text(
                         "Continue Shopping",
-                        style: TextStyle(color: Colors.black),
+                        style: TextStyle(color: Colors.black, fontSize: 13),
                       ),
                     ),
                   ),
 
                   const SizedBox(width: 15),
-
-                  // ✅ Checkout button now goes to CheckoutScreen
                   Expanded(
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(backgroundColor: Colors.red),

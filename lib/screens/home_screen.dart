@@ -243,8 +243,7 @@ class _HomeContentState extends State<HomeContent> {
         .addPostFrameCallback((_) {
       _timer = Timer.periodic(
           const Duration(seconds: 3), (_) {
-        if (!_scrollController.hasClients)
-          return;
+        if (!_scrollController.hasClients) return;
 
         scrollPosition += 130;
 

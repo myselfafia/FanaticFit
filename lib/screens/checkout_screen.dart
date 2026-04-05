@@ -35,7 +35,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 15),
           decoration: BoxDecoration(
-            border: Border.all(color: selected ? Colors.red : Colors.grey, width: selected ? 2 : 1),
+            border: Border.all(color: selected ? Colors.red : Colors.grey,
+                width: selected ? 2 : 1),
             borderRadius: BorderRadius.circular(8),
           ),
           child: Column(
