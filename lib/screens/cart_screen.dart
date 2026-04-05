@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fanaticfit/cart_model.dart';
 import 'home_screen.dart';
+import 'checkout_screen.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({super.key});
@@ -64,13 +65,11 @@ class _CartScreenState extends State<CartScreen> {
 
                         Expanded(
                           child: Column(
-                            crossAxisAlignment:
-                            CrossAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
                                 item.name,
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.bold),
+                                style: const TextStyle(fontWeight: FontWeight.bold),
                               ),
                               const SizedBox(height: 5),
                               Text("${item.price}/-TK"),
@@ -85,8 +84,7 @@ class _CartScreenState extends State<CartScreen> {
                     const SizedBox(height: 15),
 
                     Row(
-                      mainAxisAlignment:
-                      MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
 
                         Row(
@@ -121,8 +119,7 @@ class _CartScreenState extends State<CartScreen> {
 
                         Text(
                           "${item.price * item.quantity}/-TK",
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold),
+                          style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -154,23 +151,19 @@ class _CartScreenState extends State<CartScreen> {
           padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
             color: Colors.grey.shade200,
-            borderRadius:
-            const BorderRadius.vertical(
-                top: Radius.circular(20)),
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
           ),
           child: Column(
             children: [
 
               Row(
-                mainAxisAlignment:
-                MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const Text("Total amount :",
                       style: TextStyle(fontWeight: FontWeight.bold)),
                   Text(
                     "${CartStorage.totalAmount}/-TK",
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
@@ -185,8 +178,7 @@ class _CartScreenState extends State<CartScreen> {
                       onPressed: () {
                         Navigator.pushAndRemoveUntil(
                           context,
-                          MaterialPageRoute(
-                              builder: (_) => const HomeScreen()),
+                          MaterialPageRoute(builder: (_) => const HomeScreen()),
                               (route) => false,
                         );
                       },
@@ -199,11 +191,16 @@ class _CartScreenState extends State<CartScreen> {
 
                   const SizedBox(width: 15),
 
+                  // ✅ Checkout button now goes to CheckoutScreen
                   Expanded(
                     child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.red),
-                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (_) => const CheckoutScreen()),
+                        );
+                      },
                       child: const Text(
                         "Checkout",
                         style: TextStyle(color: Colors.white),

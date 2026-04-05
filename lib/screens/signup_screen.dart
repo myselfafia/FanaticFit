@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'home_screen.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -15,6 +17,62 @@ class _SignupScreenState extends State<SignupScreen> {
 
   bool _obscurePassword = true;
   bool _obscureConfirm = true;
+  bool _isLoading = false;
+
+  Future<void> _signup() async {
+    final email = emailController.text.trim();
+    final password = passwordController.text.trim();
+    final confirm = confirmController.text.trim();
+
+    if (email.isEmpty || password.isEmpty || confirm.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Please fill in all fields")),
+      );
+      return;
+    }
+
+    if (password != confirm) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Passwords do not match")),
+      );
+      return;
+    }
+
+    setState(() => _isLoading = true);
+
+    try {
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Account Created Successfully")),
+      );
+
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => HomeScreen()),
+      );
+
+    } on FirebaseAuthException catch (e) {
+      String message = "Signup failed";
+      if (e.code == 'email-already-in-use') {
+        message = "Email is already in use";
+      } else if (e.code == 'invalid-email') {
+        message = "Invalid email address";
+      } else if (e.code == 'weak-password') {
+        message = "Password is too weak";
+      }
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(message)),
+      );
+
+    } finally {
+      setState(() => _isLoading = false);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,17 +103,16 @@ class _SignupScreenState extends State<SignupScreen> {
 
               TextField(
                 controller: emailController,
+                keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                   hintText: "Email",
                   enabledBorder: UnderlineInputBorder(
-                    borderSide:
-                    BorderSide(color: Colors.grey.shade400),
+                    borderSide: BorderSide(color: Colors.grey.shade400),
                   ),
                 ),
               ),
 
               const SizedBox(height: 40),
-
 
               TextField(
                 controller: passwordController,
@@ -63,14 +120,11 @@ class _SignupScreenState extends State<SignupScreen> {
                 decoration: InputDecoration(
                   hintText: "Password",
                   enabledBorder: UnderlineInputBorder(
-                    borderSide:
-                    BorderSide(color: Colors.grey.shade400),
+                    borderSide: BorderSide(color: Colors.grey.shade400),
                   ),
                   suffixIcon: IconButton(
                     icon: Icon(
-                      _obscurePassword
-                          ? Icons.visibility_off
-                          : Icons.visibility,
+                      _obscurePassword ? Icons.visibility_off : Icons.visibility,
                       color: Colors.grey,
                     ),
                     onPressed: () {
@@ -84,21 +138,17 @@ class _SignupScreenState extends State<SignupScreen> {
 
               const SizedBox(height: 40),
 
-
               TextField(
                 controller: confirmController,
                 obscureText: _obscureConfirm,
                 decoration: InputDecoration(
                   hintText: "Confirm Password",
                   enabledBorder: UnderlineInputBorder(
-                    borderSide:
-                    BorderSide(color: Colors.grey.shade400),
+                    borderSide: BorderSide(color: Colors.grey.shade400),
                   ),
                   suffixIcon: IconButton(
                     icon: Icon(
-                      _obscureConfirm
-                          ? Icons.visibility_off
-                          : Icons.visibility,
+                      _obscureConfirm ? Icons.visibility_off : Icons.visibility,
                       color: Colors.grey,
                     ),
                     onPressed: () {
@@ -117,44 +167,21 @@ class _SignupScreenState extends State<SignupScreen> {
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.red,
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 15),
+                    padding: const EdgeInsets.symmetric(vertical: 15),
                     shape: RoundedRectangleBorder(
-                      borderRadius:
-                      BorderRadius.circular(25),
+                      borderRadius: BorderRadius.circular(25),
                     ),
                   ),
-                  onPressed: () {
-
-                    if (passwordController.text ==
-                        confirmController.text) {
-
-                      ScaffoldMessenger.of(context)
-                          .showSnackBar(
-                        const SnackBar(
-                          content: Text(
-                              "Account Created Successfully"),
-                        ),
-                      );
-
-                      Navigator.pop(context);
-
-                    } else {
-
-                      ScaffoldMessenger.of(context)
-                          .showSnackBar(
-                        const SnackBar(
-                          content:
-                          Text("Passwords do not match"),
-                        ),
-                      );
-                    }
-                  },
-                  child: const Text(
+                  onPressed: _isLoading ? null : _signup,
+                  child: _isLoading
+                      ? const CircularProgressIndicator(color: Colors.white)
+                      : const Text(
                     "Create Account",
                     style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold),
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
