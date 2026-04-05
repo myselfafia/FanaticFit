@@ -245,7 +245,7 @@ class _HomeContentState extends State<HomeContent> {
 
       _scrollController.animateTo(
         current,
-        duration: const Duration(milliseconds: 800),
+        duration: const Duration(milliseconds: 700),
         curve: Curves.easeInOut,
       );
     });
