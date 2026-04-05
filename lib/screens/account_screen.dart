@@ -57,15 +57,16 @@ class AccountScreen extends StatelessWidget {
                   GestureDetector(
                     onTap: () async {
                       await FirebaseAuth.instance.signOut();
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(builder: (_) => const HomeScreen()),
-                            (route) => false,
-                      );
+                      if (context.mounted) {
+                        Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(builder: (_) => const HomeScreen()),
+                              (route) => false,
+                        );
+                      }
                     },
                     child: _box(Icons.logout, "Sign Out"),
                   ),
-
               ],
             ),
           ),
@@ -74,7 +75,6 @@ class AccountScreen extends StatelessWidget {
     );
   }
 
-  // Reusable box widget
   Widget _box(IconData icon, String label) {
     return Container(
       height: 55,
