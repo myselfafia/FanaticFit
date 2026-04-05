@@ -71,14 +71,13 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
         child: Row(
-          mainAxisAlignment:
-          MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
 
             navItem(Icons.home, "Home", 0),
             navItem(Icons.search, "Search", 1),
             navItem(Icons.shopping_cart_outlined, "Cart", 2),
-            navItem(Icons.favorite_border, "Wishlist", 3),
+            navItem(Icons.favorite_border, "Favorite", 3),
 
             GestureDetector(
               onTap: () {
@@ -94,8 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Icon(Icons.person_outline),
                   SizedBox(height: 5),
-                  Text("Account",
-                      style: TextStyle(fontSize: 12)),
+                  Text("Account", style: TextStyle(fontSize: 12)),
                 ],
               ),
             ),
@@ -105,8 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget navItem(
-      IconData icon, String label, int index) {
+  Widget navItem(IconData icon, String label, int index) {
 
     bool isSelected = _selectedIndex == index;
 
@@ -116,16 +113,12 @@ class _HomeScreenState extends State<HomeScreen> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Icon(icon,
-              color: isSelected
-                  ? Colors.red
-                  : Colors.black),
+              color: isSelected ? Colors.red : Colors.black),
           const SizedBox(height: 5),
           Text(label,
               style: TextStyle(
                   fontSize: 12,
-                  color: isSelected
-                      ? Colors.red
-                      : Colors.black)),
+                  color: isSelected ? Colors.red : Colors.black)),
         ],
       ),
     );
@@ -136,94 +129,55 @@ class HomeContent extends StatefulWidget {
   const HomeContent({super.key});
 
   @override
-  State<HomeContent> createState() =>
-      _HomeContentState();
+  State<HomeContent> createState() => _HomeContentState();
 }
 
 class _HomeContentState extends State<HomeContent> {
 
-  final ScrollController _scrollController =
-  ScrollController();
+  final ScrollController _scrollController = ScrollController();
   Timer? _timer;
   double scrollPosition = 0;
 
-  final Map<String, Map<String, dynamic>> categories = {
+  // 🔥 SLIDER
+  int currentIndex = 0;
+  Timer? bannerTimer;
 
+  final List<String> bannerImages = [
+    "assets/images/pic1.png",
+    "assets/images/pic2.png",
+    "assets/images/pic3.png",
+    "assets/images/pic4.png",
+  ];
+
+  final Map<String, Map<String, dynamic>> categories = {
     "Premier League": {
       "image": "assets/images/pl.png",
       "sub": [
         {"name": "Arsenal", "image": "assets/images/arsenal.jpeg"},
         {"name": "Chelsea", "image": "assets/images/Chelsea.png"},
-        {"name": "Leicester", "image": "assets/images/Leicester.png"},
-        {"name": "Tottenham", "image": "assets/images/tottehnham.png"},
-        {"name": "Manchester UTD", "image": "assets/images/manU.png"},
       ]
     },
-
     "Bundesliga": {
       "image": "assets/images/bundesliga.png",
       "sub": [
         {"name": "Bayern Munich", "image": "assets/images/bayern.jpeg"},
-        {"name": "Dortmund", "image": "assets/images/dortmund.png"},
-        {"name": "RB Leipzig", "image": "assets/images/leipzig.png"},
-        {"name": "Leverkusen", "image": "assets/images/leverkusen.png"},
       ]
     },
-
     "EFL": {
       "image": "assets/images/EFL1.png",
       "sub": [
-        {"name": "Norwich", "image": "assets/images/norwich.png"},
-        {"name": "Watford", "image": "assets/images/Watford.png"},
-        {"name": "Sunderland", "image": "assets/images/sunderland.png"},
         {"name": "Leeds", "image": "assets/images/leeds.png"},
       ]
     },
-
     "La Liga": {
       "image": "assets/images/laliga.png",
       "sub": [
         {"name": "Barcelona", "image": "assets/images/barcelona.png"},
-        {"name": "Real Madrid", "image": "assets/images/realmadrid.png"},
-        {"name": "Atletico Madrid", "image": "assets/images/atleticomadrid.png"},
-      ]
-    },
-
-    "Ligue 1": {
-      "image": "assets/images/ligue1.jpg",
-      "sub": [
-        {"name": "PSG", "image": "assets/images/psg.png"},
-        {"name": "Marseille", "image": "assets/images/Marseille.png"},
-        {"name": "Monaco", "image": "assets/images/monaco.png"},
-        {"name": "Lyon", "image": "assets/images/lyon.png"},
-      ]
-    },
-
-    "Serie A": {
-      "image": "assets/images/serieA.png",
-      "sub": [
-        {"name": "Juventus", "image": "assets/images/Juventus1.png"},
-        {"name": "Inter", "image": "assets/images/interMilan.png"},
-        {"name": "AC Milan", "image": "assets/images/acmilan.png"},
-        {"name": "Napoli", "image": "assets/images/napoli.png"},
-      ]
-    },
-
-    "International": {
-      "image": "assets/images/international.png",
-      "sub": [
-        {"name": "Argentina", "image": "assets/images/argentina.png"},
-        {"name": "Brazil", "image": "assets/images/brazil1.png"},
-        {"name": "France", "image": "assets/images/france.png"},
-        {"name": "Germany", "image": "assets/images/germany.png"},
       ]
     },
   };
 
-  void openSubCategory(
-      String title,
-      List<Map<String, String>> subs,
-      ) {
+  void openSubCategory(String title, List<Map<String, String>> subs) {
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -239,25 +193,29 @@ class _HomeContentState extends State<HomeContent> {
   void initState() {
     super.initState();
 
-    WidgetsBinding.instance
-        .addPostFrameCallback((_) {
-      _timer = Timer.periodic(
-          const Duration(seconds: 3), (_) {
+    // 🔥 AUTO SCROLL CLUBS
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _timer = Timer.periodic(const Duration(seconds: 3), (_) {
         if (!_scrollController.hasClients) return;
 
         scrollPosition += 130;
 
-        if (scrollPosition >=
-            _scrollController.position.maxScrollExtent) {
+        if (scrollPosition >= _scrollController.position.maxScrollExtent) {
           scrollPosition = 0;
         }
 
         _scrollController.animateTo(
           scrollPosition,
-          duration:
-          const Duration(milliseconds: 800),
+          duration: const Duration(milliseconds: 800),
           curve: Curves.easeInOut,
         );
+      });
+    });
+
+    // 🔥 AUTO SLIDER
+    bannerTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      setState(() {
+        currentIndex = (currentIndex + 1) % bannerImages.length;
       });
     });
   }
@@ -265,6 +223,7 @@ class _HomeContentState extends State<HomeContent> {
   @override
   void dispose() {
     _timer?.cancel();
+    bannerTimer?.cancel();
     _scrollController.dispose();
     super.dispose();
   }
@@ -274,41 +233,36 @@ class _HomeContentState extends State<HomeContent> {
 
     return Column(
       children: [
+
         const SizedBox(height: 20),
+
         const Text(
           "SHOP YOUR FAVOURITE LEAGUE",
-          style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
+
         const SizedBox(height: 20),
+
+        // 🔥 CLUBS
         SizedBox(
           height: 140,
           child: ListView.builder(
             controller: _scrollController,
             scrollDirection: Axis.horizontal,
-            padding:
-            const EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             itemCount: categories.length,
             itemBuilder: (context, index) {
 
-              String title =
-              categories.keys.elementAt(index);
-
-              String image =
-              categories[title]!["image"];
-
+              String title = categories.keys.elementAt(index);
+              String image = categories[title]!["image"];
               List<Map<String, String>> subs =
-              List<Map<String, String>>.from(
-                  categories[title]!["sub"]);
+              List<Map<String, String>>.from(categories[title]!["sub"]);
 
               return GestureDetector(
-                onTap: () =>
-                    openSubCategory(title, subs),
+                onTap: () => openSubCategory(title, subs),
                 child: Container(
                   width: 110,
-                  margin:
-                  const EdgeInsets.only(right: 20),
+                  margin: const EdgeInsets.only(right: 20),
                   child: Column(
                     children: [
 
@@ -320,15 +274,13 @@ class _HomeContentState extends State<HomeContent> {
                           color: Colors.white,
                           boxShadow: [
                             BoxShadow(
-                              color:
-                              Colors.grey.shade300,
+                              color: Colors.grey.shade300,
                               blurRadius: 8,
                             ),
                           ],
                         ),
                         child: Padding(
-                          padding:
-                          const EdgeInsets.all(15),
+                          padding: const EdgeInsets.all(15),
                           child: Image.asset(image),
                         ),
                       ),
@@ -340,6 +292,26 @@ class _HomeContentState extends State<HomeContent> {
                 ),
               );
             },
+          ),
+        ),
+
+        const SizedBox(height: 25),
+
+        // 🔥 BIG SLIDER BELOW
+        Container(
+          height: 300,
+          margin: const EdgeInsets.symmetric(horizontal: 20),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(15),
+            child: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 500),
+              child: Image.asset(
+                bannerImages[currentIndex],
+                key: ValueKey(currentIndex),
+                fit: BoxFit.cover,
+                width: double.infinity,
+              ),
+            ),
           ),
         ),
       ],
