@@ -146,7 +146,7 @@ class _HomeContentState extends State<HomeContent> {
     "assets/images/pic4.png",
   ];
 
-  // ✅ FULL FIXED CATEGORIES
+
   final Map<String, Map<String, dynamic>> categories = {
 
     "Premier League": {
@@ -236,7 +236,7 @@ class _HomeContentState extends State<HomeContent> {
   void initState() {
     super.initState();
 
-    // AUTO SCROLL
+
     _timer = Timer.periodic(const Duration(seconds: 3), (_) {
       if (!_scrollController.hasClients) return;
 
@@ -252,7 +252,7 @@ class _HomeContentState extends State<HomeContent> {
       );
     });
 
-    // SLIDER
+
     bannerTimer = Timer.periodic(const Duration(seconds: 2), (_) {
       setState(() {
         currentIndex = (currentIndex + 1) % bannerImages.length;
@@ -283,7 +283,7 @@ class _HomeContentState extends State<HomeContent> {
 
         const SizedBox(height: 20),
 
-        // CLUBS
+
         SizedBox(
           height: 140,
           child: ListView.builder(
@@ -337,7 +337,6 @@ class _HomeContentState extends State<HomeContent> {
 
         const SizedBox(height: 25),
 
-        // SLIDER
         Container(
           height: 300,
           margin: const EdgeInsets.symmetric(horizontal: 20),
