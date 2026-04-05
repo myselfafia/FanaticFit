@@ -104,7 +104,6 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget navItem(IconData icon, String label, int index) {
-
     bool isSelected = _selectedIndex == index;
 
     return GestureDetector(
@@ -136,9 +135,7 @@ class _HomeContentState extends State<HomeContent> {
 
   final ScrollController _scrollController = ScrollController();
   Timer? _timer;
-  double scrollPosition = 0;
 
-  // 🔥 SLIDER
   int currentIndex = 0;
   Timer? bannerTimer;
 
@@ -149,30 +146,76 @@ class _HomeContentState extends State<HomeContent> {
     "assets/images/pic4.png",
   ];
 
+  // ✅ FULL FIXED CATEGORIES
   final Map<String, Map<String, dynamic>> categories = {
+
     "Premier League": {
       "image": "assets/images/pl.png",
       "sub": [
         {"name": "Arsenal", "image": "assets/images/arsenal.jpeg"},
         {"name": "Chelsea", "image": "assets/images/Chelsea.png"},
+        {"name": "Leicester", "image": "assets/images/Leicester.png"},
+        {"name": "Tottenham", "image": "assets/images/tottehnham.png"},
+        {"name": "Manchester UTD", "image": "assets/images/manU.png"},
       ]
     },
+
     "Bundesliga": {
       "image": "assets/images/bundesliga.png",
       "sub": [
         {"name": "Bayern Munich", "image": "assets/images/bayern.jpeg"},
+        {"name": "Dortmund", "image": "assets/images/dortmund.png"},
+        {"name": "RB Leipzig", "image": "assets/images/leipzig.png"},
+        {"name": "Leverkusen", "image": "assets/images/leverkusen.png"},
       ]
     },
+
     "EFL": {
       "image": "assets/images/EFL1.png",
       "sub": [
+        {"name": "Norwich", "image": "assets/images/norwich.png"},
+        {"name": "Watford", "image": "assets/images/watford.png"},
+        {"name": "Sunderland", "image": "assets/images/sunderland.png"},
         {"name": "Leeds", "image": "assets/images/leeds.png"},
       ]
     },
+
     "La Liga": {
       "image": "assets/images/laliga.png",
       "sub": [
         {"name": "Barcelona", "image": "assets/images/barcelona.png"},
+        {"name": "Real Madrid", "image": "assets/images/realmadrid.png"},
+        {"name": "Atletico Madrid", "image": "assets/images/atleticomadrid.png"},
+      ]
+    },
+
+    "Ligue 1": {
+      "image": "assets/images/ligue1.jpg",
+      "sub": [
+        {"name": "PSG", "image": "assets/images/psg.png"},
+        {"name": "Marseille", "image": "assets/images/Marseille.png"},
+        {"name": "Monaco", "image": "assets/images/monaco.png"},
+        {"name": "Lyon", "image": "assets/images/lyon.png"},
+      ]
+    },
+
+    "Serie A": {
+      "image": "assets/images/serieA.png",
+      "sub": [
+        {"name": "Juventus", "image": "assets/images/Juventus1.png"},
+        {"name": "Inter", "image": "assets/images/interMilan.png"},
+        {"name": "AC Milan", "image": "assets/images/acmilan.png"},
+        {"name": "Napoli", "image": "assets/images/napoli.png"},
+      ]
+    },
+
+    "International": {
+      "image": "assets/images/international.png",
+      "sub": [
+        {"name": "Argentina", "image": "assets/images/argentina.png"},
+        {"name": "Brazil", "image": "assets/images/brazil1.png"},
+        {"name": "France", "image": "assets/images/france.png"},
+        {"name": "Germany", "image": "assets/images/germany.png"},
       ]
     },
   };
@@ -193,27 +236,24 @@ class _HomeContentState extends State<HomeContent> {
   void initState() {
     super.initState();
 
-    // 🔥 AUTO SCROLL CLUBS
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _timer = Timer.periodic(const Duration(seconds: 3), (_) {
-        if (!_scrollController.hasClients) return;
+    // AUTO SCROLL
+    _timer = Timer.periodic(const Duration(seconds: 3), (_) {
+      if (!_scrollController.hasClients) return;
 
-        scrollPosition += 130;
+      double max = _scrollController.position.maxScrollExtent;
+      double current = _scrollController.offset + 130;
 
-        if (scrollPosition >= _scrollController.position.maxScrollExtent) {
-          scrollPosition = 0;
-        }
+      if (current >= max) current = 0;
 
-        _scrollController.animateTo(
-          scrollPosition,
-          duration: const Duration(milliseconds: 800),
-          curve: Curves.easeInOut,
-        );
-      });
+      _scrollController.animateTo(
+        current,
+        duration: const Duration(milliseconds: 800),
+        curve: Curves.easeInOut,
+      );
     });
 
-    // 🔥 AUTO SLIDER
-    bannerTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
+    // SLIDER
+    bannerTimer = Timer.periodic(const Duration(seconds: 2), (_) {
       setState(() {
         currentIndex = (currentIndex + 1) % bannerImages.length;
       });
@@ -243,7 +283,7 @@ class _HomeContentState extends State<HomeContent> {
 
         const SizedBox(height: 20),
 
-        // 🔥 CLUBS
+        // CLUBS
         SizedBox(
           height: 140,
           child: ListView.builder(
@@ -297,7 +337,7 @@ class _HomeContentState extends State<HomeContent> {
 
         const SizedBox(height: 25),
 
-        // 🔥 BIG SLIDER BELOW
+        // SLIDER
         Container(
           height: 300,
           margin: const EdgeInsets.symmetric(horizontal: 20),
