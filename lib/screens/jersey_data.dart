@@ -371,7 +371,7 @@ class JerseyData {
         {
           "name": "Lyon Home 25-26",
           "price": 1200,
-          "image": "assets/images/barca_home.png",
+          "image": "assets/images/",
           "sizes": ["S", "M", "L", "XL"],
           "description":
           "Lyon 25-26 Home Jersey."
@@ -379,7 +379,7 @@ class JerseyData {
         {
           "name": "Lyon Away 25-26",
           "price": 1200,
-          "image": "assets/images/barca_away.png",
+          "image": "assets/images/",
           "sizes": ["S", "M", "L", "XL"],
           "description":
           "Lyon 25-26 Away Jersey."
@@ -393,7 +393,7 @@ class JerseyData {
         {
           "name": "Juventus Home 25-26",
           "price": 1200,
-          "image": "assets/images/barca_home.png",
+          "image": "assets/images/",
           "sizes": ["S", "M", "L", "XL"],
           "description":
           "Juventus 25-26 Home Jersey."

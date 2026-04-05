@@ -15,7 +15,6 @@ class AccountScreen extends StatelessWidget {
       body: Column(
         children: [
 
-          // Logo header with back button
           Container(
             padding: const EdgeInsets.symmetric(vertical: 15),
             color: Colors.grey.shade200,
@@ -46,7 +45,6 @@ class AccountScreen extends StatelessWidget {
                 const Text("Account", style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
                 const SizedBox(height: 24),
 
-                // Show Login only if NOT logged in
                 if (user == null)
                   GestureDetector(
                     onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const LoginScreen())),
@@ -55,7 +53,6 @@ class AccountScreen extends StatelessWidget {
 
                 if (user == null) const SizedBox(height: 16),
 
-                // Show Sign Out only if logged in
                 if (user != null)
                   GestureDetector(
                     onTap: () async {
