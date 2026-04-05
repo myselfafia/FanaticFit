@@ -223,6 +223,7 @@ class _JerseyDetailsScreenState
               ),
               label: Text(
                 isWishlisted ? "Wishlisted" : "Wishlist",
+                style: TextStyle(color: Colors.red),
               ),
             ),
           ],

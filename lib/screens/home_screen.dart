@@ -78,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
             navItem(Icons.home, "Home", 0),
             navItem(Icons.search, "Search", 1),
             navItem(Icons.shopping_cart_outlined, "Cart", 2),
-            navItem(Icons.favorite_border, "Favorite", 3),
+            navItem(Icons.favorite_border, "Wishlist", 3),
 
             GestureDetector(
               onTap: () {
