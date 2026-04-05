@@ -317,7 +317,7 @@ class JerseyData {
         {
           "name": "PSG Home 25-26",
           "price": 1200,
-          "image": "assets/images/barca_home.png",
+          "image": "assets/images/psg-home-25-26.jpg",
           "sizes": ["S", "M", "L", "XL"],
           "description":
           "PSG 25-26 Home Jersey."
@@ -325,7 +325,7 @@ class JerseyData {
         {
           "name": "PSG Away 25-26",
           "price": 1200,
-          "image": "assets/images/barca_away.png",
+          "image": "assets/images/psg-away-25-26.jpg",
           "sizes": ["S", "M", "L", "XL"],
           "description":
           "PSG 25-26 Away Jersey."
@@ -335,7 +335,7 @@ class JerseyData {
         {
           "name": "Marseille Home 25-26",
           "price": 1200,
-          "image": "assets/images/barca_home.png",
+          "image": "assets/images/Marseille-home-25-26.jpg",
           "sizes": ["S", "M", "L", "XL"],
           "description":
           "Marseille 25-26 Home Jersey."
@@ -343,7 +343,7 @@ class JerseyData {
         {
           "name": "Marseille Away 25-26",
           "price": 1200,
-          "image": "assets/images/barca_away.png",
+          "image": "assets/images/Marseille-away-25-26.jpg",
           "sizes": ["S", "M", "L", "XL"],
           "description":
           "Marseille 25-26 Away Jersey."
@@ -353,7 +353,7 @@ class JerseyData {
         {
           "name": "Monaco Home 25-26",
           "price": 1200,
-          "image": "assets/images/barca_home.png",
+          "image": "assets/images/monaco-home-25-26.jpg",
           "sizes": ["S", "M", "L", "XL"],
           "description":
           "Monaco 25-26 Home Jersey."
@@ -361,7 +361,7 @@ class JerseyData {
         {
           "name": "Monaco Away 25-26",
           "price": 1200,
-          "image": "assets/images/barca_away.png",
+          "image": "assets/images/monaco-away-25-26.jpg",
           "sizes": ["S", "M", "L", "XL"],
           "description":
           "Monaco 25-26 Away Jersey."
@@ -371,7 +371,7 @@ class JerseyData {
         {
           "name": "Lyon Home 25-26",
           "price": 1200,
-          "image": "assets/images/",
+          "image": "assets/images/lyon-home-25-26.jpg",
           "sizes": ["S", "M", "L", "XL"],
           "description":
           "Lyon 25-26 Home Jersey."
@@ -379,7 +379,7 @@ class JerseyData {
         {
           "name": "Lyon Away 25-26",
           "price": 1200,
-          "image": "assets/images/",
+          "image": "assets/images/lyon-away-25-26.jpg",
           "sizes": ["S", "M", "L", "XL"],
           "description":
           "Lyon 25-26 Away Jersey."
@@ -393,7 +393,7 @@ class JerseyData {
         {
           "name": "Juventus Home 25-26",
           "price": 1200,
-          "image": "assets/images/",
+          "image": "assets/images/juventus-home-25-26.jpg",
           "sizes": ["S", "M", "L", "XL"],
           "description":
           "Juventus 25-26 Home Jersey."
@@ -401,7 +401,7 @@ class JerseyData {
         {
           "name": "Juventus Away 25-26",
           "price": 1200,
-          "image": "assets/images/barca_away.png",
+          "image": "assets/images/juventus-away-25-26.jpg",
           "sizes": ["S", "M", "L", "XL"],
           "description":
           "Juventus 25-26 Away Jersey."
@@ -411,7 +411,7 @@ class JerseyData {
         {
           "name": "Inter Home 25-26",
           "price": 1200,
-          "image": "assets/images/barca_home.png",
+          "image": "assets/images/inter-home-25-26.jpg",
           "sizes": ["S", "M", "L", "XL"],
           "description":
           "Inter 25-26 Home Jersey."
@@ -419,7 +419,7 @@ class JerseyData {
         {
           "name": "Inter Away 25-26",
           "price": 1200,
-          "image": "assets/images/barca_away.png",
+          "image": "assets/images/inter-away-25-26.jpg",
           "sizes": ["S", "M", "L", "XL"],
           "description":
           "Inter 25-26 Away Jersey."
@@ -429,7 +429,7 @@ class JerseyData {
         {
           "name": "AC Milan Home 25-26",
           "price": 1200,
-          "image": "assets/images/barca_home.png",
+          "image": "assets/images/acmilan-home-25-26.jpg",
           "sizes": ["S", "M", "L", "XL"],
           "description":
           "AC Milan25-26 Home Jersey."
@@ -437,7 +437,7 @@ class JerseyData {
         {
           "name": "AC Milan Away 25-26",
           "price": 1200,
-          "image": "assets/images/barca_away.png",
+          "image": "assets/images/acmilan-away-25-26.jpg",
           "sizes": ["S", "M", "L", "XL"],
           "description":
           "AC Milan 25-26 Away Jersey."
@@ -447,7 +447,7 @@ class JerseyData {
         {
           "name": "Napoli Home 25-26",
           "price": 1200,
-          "image": "assets/images/barca_home.png",
+          "image": "assets/images/napoli-home-25-26.jpg",
           "sizes": ["S", "M", "L", "XL"],
           "description":
           "Napoli 25-26 Home Jersey."
@@ -455,7 +455,7 @@ class JerseyData {
         {
           "name": "Napoli Away 25-26",
           "price": 1200,
-          "image": "assets/images/barca_away.png",
+          "image": "assets/images/napoli-away-25-26.jpg",
           "sizes": ["S", "M", "L", "XL"],
           "description":
           "Napoli 25-26 Away Jersey."
