@@ -278,7 +278,7 @@ class _HomeContentState extends State<HomeContent> {
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
 
-        const SizedBox(height: 20),
+        const SizedBox(height: 10),
 
         SizedBox(
           height: 140,
@@ -298,7 +298,7 @@ class _HomeContentState extends State<HomeContent> {
                 onTap: () => openSubCategory(title, subs),
                 child: Container(
                   width: 110,
-                  margin: const EdgeInsets.only(right: 20),
+                  margin: const EdgeInsets.only(right: 10),
                   child: Column(
                     children: [
 
@@ -331,15 +331,15 @@ class _HomeContentState extends State<HomeContent> {
           ),
         ),
 
-        const SizedBox(height: 25),
+        const SizedBox(height: 40),
 
         Container(
-          height: 300,
+          height: 400,
           margin: const EdgeInsets.symmetric(horizontal: 20),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(15),
             child: AnimatedSwitcher(
-              duration: const Duration(milliseconds: 500),
+              duration: const Duration(milliseconds: 600),
               child: Image.asset(
                 bannerImages[currentIndex],
                 key: ValueKey(currentIndex),
