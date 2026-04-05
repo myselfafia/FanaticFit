@@ -146,7 +146,6 @@ class _HomeContentState extends State<HomeContent> {
     "assets/images/pic4.png",
   ];
 
-
   final Map<String, Map<String, dynamic>> categories = {
 
     "Premier League": {
@@ -236,7 +235,6 @@ class _HomeContentState extends State<HomeContent> {
   void initState() {
     super.initState();
 
-
     _timer = Timer.periodic(const Duration(seconds: 3), (_) {
       if (!_scrollController.hasClients) return;
 
@@ -251,7 +249,6 @@ class _HomeContentState extends State<HomeContent> {
         curve: Curves.easeInOut,
       );
     });
-
 
     bannerTimer = Timer.periodic(const Duration(seconds: 2), (_) {
       setState(() {
@@ -282,7 +279,6 @@ class _HomeContentState extends State<HomeContent> {
         ),
 
         const SizedBox(height: 20),
-
 
         SizedBox(
           height: 140,
