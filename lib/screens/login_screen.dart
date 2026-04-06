@@ -85,7 +85,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
               const SizedBox(height: 30),
 
-              // Logo
               Center(
                 child: Image.asset(
                   'assets/images/splashScreen2.jpeg',
@@ -95,7 +94,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
               const SizedBox(height: 36),
 
-              // Email field
               TextField(
                 controller: usernameController,
                 keyboardType: TextInputType.emailAddress,
@@ -115,7 +113,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
               const SizedBox(height: 16),
 
-              // Password field
               TextField(
                 controller: passwordController,
                 obscureText: _password,
@@ -146,7 +143,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
               const SizedBox(height: 24),
 
-              // Login button
               SizedBox(
                 width: double.infinity,
                 height: 50,
@@ -173,7 +169,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
               const SizedBox(height: 20),
 
-              // Create new account
               Center(
                 child: TextButton(
                   onPressed: () {

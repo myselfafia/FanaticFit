@@ -59,7 +59,7 @@ class _CartScreenState extends State<CartScreen> {
                     Row(
                       children: [
 
-                        Image.asset(item.image, height: 100),
+                        Image.asset(item.image, height: 110),
 
                         const SizedBox(width: 15),
 

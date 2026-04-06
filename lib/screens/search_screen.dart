@@ -22,7 +22,6 @@ class _SearchScreenState extends State<SearchScreen> {
     loadAllProducts();
   }
 
-  // 🔥 Collect ALL jerseys from your data
   void loadAllProducts() {
     JerseyData.data.forEach((league, clubs) {
       clubs.forEach((club, jerseys) {
@@ -35,7 +34,6 @@ class _SearchScreenState extends State<SearchScreen> {
     filteredProducts = allProducts;
   }
 
-  // 🔥 Search logic
   void searchProduct(String query) {
     final results = allProducts.where((product) {
       final name = product["name"].toString().toLowerCase();
@@ -53,7 +51,6 @@ class _SearchScreenState extends State<SearchScreen> {
     return Column(
       children: [
 
-        // 🔍 SEARCH BAR
         Padding(
           padding: const EdgeInsets.all(15),
           child: TextField(
@@ -69,7 +66,6 @@ class _SearchScreenState extends State<SearchScreen> {
           ),
         ),
 
-        // 📦 RESULTS
         Expanded(
           child: filteredProducts.isEmpty
               ? const Center(child: Text("No products found"))
